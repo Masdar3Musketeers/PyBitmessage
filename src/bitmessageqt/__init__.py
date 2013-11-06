@@ -261,6 +261,17 @@ class MyForm(QtGui.QMainWindow):
             "triggered()"), self.click_actionAbout)
         QtCore.QObject.connect(self.ui.actionHelp, QtCore.SIGNAL(
             "triggered()"), self.click_actionHelp)
+        QtCore.QObject.connect(self.ui.actionHelp, QtCore.SIGNAL(
+            "clicked()"), self.click_actionHelp)
+
+        #Load Inbox messages into table when clicked on Inbox item in Tree Widget
+        # Load inbox from messages database file
+
+        r = self.ui.treeWidget.children()
+
+
+            #.loadInbox()
+
 
         # Popup menu for the Inbox tab
         self.ui.inboxContextMenuToolbar = QtGui.QToolBar()
@@ -457,8 +468,7 @@ class MyForm(QtGui.QMainWindow):
                     status, addressVersionNumber, streamNumber, hash = decodeAddress(
                         addressInKeysFile)
 
-        # Load inbox from messages database file
-        self.loadInbox()
+
 
         # Load Sent items from database
         self.loadSent()

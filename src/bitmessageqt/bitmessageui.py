@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'bitmessageui.ui'
 #
-# Created: Sat Nov  2 18:01:09 2013
-#      by: PyQt4 UI code generator 4.10
+# Created: Wed Nov 06 16:46:24 2013
+#      by: PyQt4 UI code generator 4.10.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -52,15 +52,16 @@ class Ui_MainWindow(object):
         self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
         self.inbox = QtGui.QWidget()
         self.inbox.setObjectName(_fromUtf8("inbox"))
-        self.verticalLayout_2 = QtGui.QVBoxLayout(self.inbox)
-        self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
-        self.horizontalLayoutSearch = QtGui.QHBoxLayout()
+        self.widget = QtGui.QWidget(self.inbox)
+        self.widget.setGeometry(QtCore.QRect(9, 9, 861, 22))
+        self.widget.setObjectName(_fromUtf8("widget"))
+        self.horizontalLayoutSearch = QtGui.QHBoxLayout(self.widget)
         self.horizontalLayoutSearch.setContentsMargins(-1, 0, -1, -1)
         self.horizontalLayoutSearch.setObjectName(_fromUtf8("horizontalLayoutSearch"))
-        self.inboxSearchLineEdit = QtGui.QLineEdit(self.inbox)
+        self.inboxSearchLineEdit = QtGui.QLineEdit(self.widget)
         self.inboxSearchLineEdit.setObjectName(_fromUtf8("inboxSearchLineEdit"))
         self.horizontalLayoutSearch.addWidget(self.inboxSearchLineEdit)
-        self.inboxSearchOptionCB = QtGui.QComboBox(self.inbox)
+        self.inboxSearchOptionCB = QtGui.QComboBox(self.widget)
         self.inboxSearchOptionCB.setObjectName(_fromUtf8("inboxSearchOptionCB"))
         self.inboxSearchOptionCB.addItem(_fromUtf8(""))
         self.inboxSearchOptionCB.addItem(_fromUtf8(""))
@@ -68,10 +69,18 @@ class Ui_MainWindow(object):
         self.inboxSearchOptionCB.addItem(_fromUtf8(""))
         self.inboxSearchOptionCB.addItem(_fromUtf8(""))
         self.horizontalLayoutSearch.addWidget(self.inboxSearchOptionCB)
-        self.verticalLayout_2.addLayout(self.horizontalLayoutSearch)
-        self.splitter = QtGui.QSplitter(self.inbox)
-        self.splitter.setOrientation(QtCore.Qt.Vertical)
+        self.splitter_3 = QtGui.QSplitter(self.inbox)
+        self.splitter_3.setGeometry(QtCore.QRect(10, 39, 861, 461))
+        self.splitter_3.setOrientation(QtCore.Qt.Vertical)
+        self.splitter_3.setObjectName(_fromUtf8("splitter_3"))
+        self.splitter = QtGui.QSplitter(self.splitter_3)
+        self.splitter.setOrientation(QtCore.Qt.Horizontal)
         self.splitter.setObjectName(_fromUtf8("splitter"))
+        self.treeWidget = QtGui.QTreeWidget(self.splitter)
+        self.treeWidget.setAllColumnsShowFocus(False)
+        self.treeWidget.setObjectName(_fromUtf8("treeWidget"))
+        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
+        item_0 = QtGui.QTreeWidgetItem(self.treeWidget)
         self.tableWidgetInbox = QtGui.QTableWidget(self.splitter)
         self.tableWidgetInbox.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.tableWidgetInbox.setAlternatingRowColors(True)
@@ -97,11 +106,10 @@ class Ui_MainWindow(object):
         self.tableWidgetInbox.horizontalHeader().setStretchLastSection(True)
         self.tableWidgetInbox.verticalHeader().setVisible(False)
         self.tableWidgetInbox.verticalHeader().setDefaultSectionSize(26)
-        self.textEditInboxMessage = QtGui.QTextEdit(self.splitter)
+        self.textEditInboxMessage = QtGui.QTextEdit(self.splitter_3)
         self.textEditInboxMessage.setBaseSize(QtCore.QSize(0, 500))
         self.textEditInboxMessage.setReadOnly(True)
         self.textEditInboxMessage.setObjectName(_fromUtf8("textEditInboxMessage"))
-        self.verticalLayout_2.addWidget(self.splitter)
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(_fromUtf8(":/newPrefix/images/inbox.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabWidget.addTab(self.inbox, icon1, _fromUtf8(""))
@@ -439,7 +447,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 885, 27))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 885, 21))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuFile = QtGui.QMenu(self.menubar)
         self.menuFile.setObjectName(_fromUtf8("menuFile"))
@@ -539,6 +547,12 @@ class Ui_MainWindow(object):
         self.inboxSearchOptionCB.setItemText(2, _translate("MainWindow", "From", None))
         self.inboxSearchOptionCB.setItemText(3, _translate("MainWindow", "Subject", None))
         self.inboxSearchOptionCB.setItemText(4, _translate("MainWindow", "Message", None))
+        self.treeWidget.headerItem().setText(0, _translate("MainWindow", "Messages", None))
+        __sortingEnabled = self.treeWidget.isSortingEnabled()
+        self.treeWidget.setSortingEnabled(False)
+        self.treeWidget.topLevelItem(0).setText(0, _translate("MainWindow", "Inbox", None))
+        self.treeWidget.topLevelItem(1).setText(0, _translate("MainWindow", "Sent", None))
+        self.treeWidget.setSortingEnabled(__sortingEnabled)
         self.tableWidgetInbox.setSortingEnabled(True)
         item = self.tableWidgetInbox.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "To", None))
@@ -557,8 +571,8 @@ class Ui_MainWindow(object):
         self.textEditMessage.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Sans\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'MS Shell Dlg 2\';\"><br /></p></body></html>", None))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
         self.label.setText(_translate("MainWindow", "To:", None))
         self.label_2.setText(_translate("MainWindow", "From:", None))
         self.radioButtonBroadcast.setText(_translate("MainWindow", "Broadcast to everyone who is subscribed to your address", None))
@@ -642,3 +656,13 @@ class Ui_MainWindow(object):
         self.actionJoinChan.setText(_translate("MainWindow", "Join / Create chan", None))
 
 import bitmessage_icons_rc
+
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    MainWindow = QtGui.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
+
